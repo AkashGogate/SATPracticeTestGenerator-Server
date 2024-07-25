@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Writing Passage</title>
+    <style>
+        .question-container {
+            margin-bottom: 30px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+    <script>
+        let startTime;
+        window.onload = () => {
+            startTime = new Date();
+        };
+
+        function checkAnswer(qNum, correctAnswer, explanation) {
+            let endTime = new Date();
+            let timeTaken = Math.round((endTime - startTime) / 1000);
+            
+            document.querySelector(`#feedback${qNum}`).innerHTML = "";
+            
+            let radios = document.getElementsByName(`q${qNum}`);
+            let selectedValue;
+            radios.forEach(radio => {
+                if (radio.checked) {
+                    selectedValue = radio.value;
+                }
+            });
+
+            if (selectedValue === correctAnswer) {
+                document.querySelector(`#feedback${qNum}`).innerHTML = "Correct! " + correctAnswer;
+                document.querySelector(`#feedback${qNum}`).classList.add('correct');
+            } else {
+                document.querySelector(`#feedback${qNum}`).innerHTML = `Incorrect! Correct Answer: ${correctAnswer}. ${explanation}`;
+                document.querySelector(`#feedback${qNum}`).classList.add('incorrect');
+            }
+            
+            let timeNode = document.createElement("div");
+            timeNode.innerHTML = `<strong>Time Taken: </strong>${timeTaken} seconds.`;
+            document.querySelector(`#feedback${qNum}`).appendChild(timeNode);
+        }
+    </script>
+</head>
+<body>
+    <h1>WRITING</h1>
+    <p>Questions 1 – 5:</p>
+    <p>
+        Flavored <u>smoothies</u><sup>1</sup> have become exceedingly popular in recent years, with countless variations to suit all tastes. A typical smoothie consists of blended fruit, juice or milk, and sometimes additional ingredients such as yogurt, nuts, and seeds. Smoothies are praised for their potential health benefits and as a convenient way to consume a variety of nutrients. Nutritionists often recommend incorporating a smoothie into one's daily diet as a means of getting essential vitamins and <u>minerals</u><sup>2</sup>.
+    </p>
+    <p>
+        However, not all smoothies are created equal. Some store-bought varieties are loaded with sugar and <u>preservatives</u><sup>3</sup>, which can negate any of the potential health benefits. Therefore, it is often better to make your own smoothies at home, where you can control the ingredients and ensure they are fresh and nutritious. Additionally, homemade smoothies can be tailored to individual dietary needs and preferences.
+    </p>
+    <p>
+        One of the key advantages of smoothies is their <u>versatility</u><sup>4</sup>. Almost any fruit can be used, and vegetables such as spinach and kale can be added without negatively affecting the taste. For those with dietary restrictions or preferences, smoothies can be made dairy-free, nut-free, or gluten-free with ease. This makes them a widely accessible and customizable choice for a healthy diet.
+    </p>
+    <p>
+        Another consideration is the environmental impact. Store-bought smoothies often come in single-use plastic containers, contributing to the growing problem of plastic waste. By making smoothies at home, you can reduce this waste by using reusable containers and purchasing fresh, whole fruits instead of pre-packaged options.
+    </p>
+
+    <div class="question-container">
+        <p>1. What is one of the reasons given for making smoothies at home?</p>
+        <input type="radio" name="q1" value="A"> A. It is more time-consuming.<br>
+        <input type="radio" name="q1" value="B"> B. Homemade smoothies can be tailored to individual dietary needs and preferences.<br>
+        <input type="radio" name="q1" value="C"> C. Store-bought smoothies are typically more nutritious.<br>
+        <input type="radio" name="q1" value="D"> D. It requires purchasing pre-packaged ingredients.<br>
+        <button onclick="checkAnswer(1, 'B', 'Homemade smoothies can be tailored to individual dietary needs and preferences, ensuring they are healthier.')">Submit</button>
+        <div id="feedback1"></div>
+    </div>
+    
+    <div class="question-container">
+        <p>2. Which word is the passage's example of an ingredient that can be undesirable in store-bought smoothies?</p>
+        <input type="radio" name="q2" value="A"> A. Vitamins<br>
+        <input type="radio" name="q2" value="B"> B. Nuts<br>
+        <input type="radio" name="q2" value="C"> C. Sugar<br>
+        <input type="radio" name="q2" value="D"> D. Minerals<br>
+        <button onclick="checkAnswer(2, 'C', 'Sugar is mentioned as an undesirable ingredient in store-bought smoothies.')">Submit</button>
+        <div id="feedback2"></div>
+    </div>
+
+    <div class="question-container">
+        <p>3. What suggestion does the passage make to reduce environmental impact when consuming smoothies?</p>
+        <input type="radio" name="q3" value="A"> A. Buy smoothies in bulk.<br>
+        <input type="radio" name="q3" value="B"> B. Make smoothies at home.<br>
+        <input type="radio" name="q3" value="C"> C. Purchase store-bought smoothies.<br>
+        <input type="radio" name="q3" value="D"> D. Add vegetables to smoothies.<br>
+        <button onclick="checkAnswer(3, 'B', 'Making smoothies at home can reduce the use of single-use plastic containers.')">Submit</button>
+        <div id="feedback3"></div>
+    </div>
+
+    <div class="question-container">
+        <p>4. According to the passage, which vegetables can be added to smoothies without negatively affecting the taste?</p>
+        <input type="radio" name="q4" value="A"> A. Carrots and Beets<br>
+        <input type="radio" name="q4" value="B"> B. Spinach and Kale<br>
+        <input type="radio" name="q4" value="C"> C. Broccoli and Cauliflower<br>
+        <input type="radio" name="q4" value="D"> D. Peppers and Onions<br>
+        <button onclick="checkAnswer(4, 'B', 'Spinach and kale can be added to smoothies without negatively affecting the taste.')">Submit</button>
+        <div id="feedback4"></div>
+    </div>
+
+    <div class="question-container">
+        <p>5. What is a chief benefit of smoothies highlighted in the passage?</p>
+        <input type="radio" name="q5" value="A"> A. They are difficult to prepare.<br>
+        <input type="radio" name="q5" value="B"> B. They have a consistent taste.<br>
+        <input type="radio" name="q5" value="C"> C. They help consume a variety of nutrients conveniently.<br>
+        <input type="radio" name="q5" value="D"> D. They require store-bought ingredients.<br>
+        <button onclick="checkAnswer(5, 'C', 'Smoothies are praised for their potential health benefits and as a convenient way to consume a variety of nutrients.')">Submit</button>
+        <div id="feedback5"></div>
+    </div>
+</body>
+</html>

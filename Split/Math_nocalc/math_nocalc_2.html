@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SAT Math Practice</title>
+    <style>
+        .question {
+            margin-bottom: 20px;
+        }
+        .answer {
+            margin-top: 10px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .time-taken {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        let startTime;
+
+        window.onload = function() {
+            startTime = new Date().getTime();
+        };
+
+        function checkAnswer(questionId, correctOption) {
+            const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+            const answerDiv = document.getElementById(`answer-${questionId}`);
+            const timeTakenDiv = document.getElementById(`time-taken-${questionId}`);
+            const currentTime = new Date().getTime();
+            const timeTaken = ((currentTime - startTime) / 1000).toFixed(2);
+
+            answerDiv.innerHTML = '';
+            timeTakenDiv.innerHTML = '';
+
+            if (selectedOption) {
+                if (selectedOption.value === correctOption) {
+                    answerDiv.innerHTML = '<span class="correct">Correct!</span>';
+                } else {
+                    answerDiv.innerHTML = `<span class="incorrect">Incorrect. The correct answer is ${correctOption}. Explanation: ${getExplanation(questionId)}</span>`;
+                }
+            } else {
+                answerDiv.innerHTML = '<span class="incorrect">Please select an answer.</span>';
+            }
+
+            timeTakenDiv.innerHTML = `<span class="time-taken">Time Taken: ${timeTaken} seconds</span>`;
+        }
+
+        function getExplanation(questionId) {
+            switch (questionId) {
+                case 'q1':
+                    return 'Substitute x = 2 into the equation y = 4 - x. This gives y = 4 - 2 = 2.';
+                case 'q2':
+                    return 'Solve the equation |x + 3| = 6. This gives two solutions: x + 3 = 6 or x + 3 = -6. The positive solution is x = 3.';
+                case 'q3':
+                    return 'Substitute y = 0 into the equation y = 4 - x. This gives 0 = 4 - x, so x = 4.';
+                case 'q4':
+                    return 'The equation y = 4 - x is in the form y = mx + b, where m is the slope. Here, m = -1.';
+                case 'q5':
+                    return 'The y-intercept of the equation y = 4 - x is the value of y when x = 0. This gives y = 4.';
+                default:
+                    return '';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>SAT Math Practice</h1>
+    <div class="question">
+        <p>1. The graph below shows the function ( y = 4 - x ). What is the value of ( y ) when ( x = 2 )?</p>
+        <svg width="300" height="300">
+            <line x1="50" y1="250" x2="250" y2="50" stroke="black" />
+            <line x1="50" y1="50" x2="50" y2="250" stroke="black" />
+            <line x1="50" y1="250" x2="250" y2="250" stroke="black" />
+            <text x="45" y="260" font-size="10">0</text>
+            <text x="245" y="260" font-size="10">x</text>
+            <text x="30" y="55" font-size="10">y</text>
+            <text x="45" y="255" font-size="10">0</text>
+            <text x="45" y="205" font-size="10">1</text>
+            <text x="45" y="155" font-size="10">2</text>
+            <text x="45" y="105" font-size="10">3</text>
+            <text x="45" y="55" font-size="10">4</text>
+            <text x="100" y="265" font-size="10">1</text>
+            <text x="150" y="265" font-size="10">2</text>
+            <text x="200" y="265" font-size="10">3</text>
+        </svg>
+        <form>
+            <input type="radio" name="q1" value="A"> (A) 2<br>
+            <input type="radio" name="q1" value="B"> (B) 3<br>
+            <input type="radio" name="q1" value="C"> (C) 4<br>
+            <input type="radio" name="q1" value="D"> (D) 2<br>
+            <button type="button" onclick="checkAnswer('q1', 'A')">Submit</button>
+        </form>
+        <div id="answer-q1" class="answer"></div>
+        <div id="time-taken-q1" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>2. Solve for ( x ) in the equation ( |x + 3| = 6 ). What is the positive solution?</p>
+        <form>
+            <input type="radio" name="q2" value="A"> (A) 2<br>
+            <input type="radio" name="q2" value="B"> (B) 3<br>
+            <input type="radio" name="q2" value="C"> (C) 9<br>
+            <input type="radio" name="q2" value="D"> (D) 6<br>
+            <button type="button" onclick="checkAnswer('q2', 'B')">Submit</button>
+        </form>
+        <div id="answer-q2" class="answer"></div>
+        <div id="time-taken-q2" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>3. If ( y = 4 - x ), what is the value of ( x ) when ( y = 0 )?</p>
+        <form>
+            <input type="radio" name="q3" value="A"> (A) 4<br>
+            <input type="radio" name="q3" value="B"> (B) 3<br>
+            <input type="radio" name="q3" value="C"> (C) 2<br>
+            <input type="radio" name="q3" value="D"> (D) 0<br>
+            <button type="button" onclick="checkAnswer('q3', 'A')">Submit</button>
+        </form>
+        <div id="answer-q3" class="answer"></div>
+        <div id="time-taken-q3" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>4. What is the slope of the line represented by the equation ( y = 4 - x )?</p>
+        <form>
+            <input type="radio" name="q4" value="A"> (A) 1<br>
+            <input type="radio" name="q4" value="B"> (B) -1<br>
+            <input type="radio" name="q4" value="C"> (C) 4<br>
+            <input type="radio" name="q4" value="D"> (D) -4<br>
+            <button type="button" onclick="checkAnswer('q4', 'B')">Submit</button>
+        </form>
+        <div id="answer-q4" class="answer"></div>
+        <div id="time-taken-q4" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>5. What is the y-intercept of the line represented by the equation ( y = 4 - x )?</p>
+        <form>
+            <input type="radio" name="q5" value="A"> (A) 0<br>
+            <input type="radio" name="q5" value="B"> (B) 4<br>
+            <input type="radio" name="q5" value="C"> (C) -4<br>
+            <input type="radio" name="q5" value="D"> (D) 1<br>
+            <button type="button" onclick="checkAnswer('q5', 'B')">Submit</button>
+        </form>
+        <div id="answer-q5" class="answer"></div>
+        <div id="time-taken-q5" class="time-taken"></div>
+    </div>
+</body>
+</html>

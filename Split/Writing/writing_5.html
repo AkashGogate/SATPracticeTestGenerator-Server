@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Writing Practice Problem</title>
+    <style>
+        #response {
+            margin-top: 20px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .time-taken {
+            font-weight: bold;
+        }
+        body {
+            font-family: "Arial", sans-serif;
+            margin: 20px;
+        }
+    </style>
+    <script>
+        let startTime;
+
+        function recordStartTime() {
+            startTime = new Date().getTime();
+        }
+
+        document.addEventListener('DOMContentLoaded', recordStartTime);
+
+        function validateAnswer(questionId, correctOption) {
+            const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+            const responseDiv = document.getElementById(`${questionId}-response`);
+            responseDiv.innerHTML = "";
+
+            if (selectedOption) {
+                const answer = selectedOption.value;
+                const currentTime = new Date().getTime();
+                const timeTaken = ((currentTime - startTime) / 1000).toFixed(2);
+                let resultMessage;
+
+                if (answer === correctOption) {
+                    resultMessage = `<div class="correct">Correct!</div>`;
+                } else {
+                    resultMessage = `<div class="incorrect">Incorrect. The correct answer is ${correctOption}. Explanation: ${getExplanation(questionId, correctOption)}</div>`;
+                }
+
+                resultMessage += `<div class="time-taken">Time Taken: ${timeTaken} seconds</div>`;
+                responseDiv.innerHTML = resultMessage;
+            } else {
+                responseDiv.innerHTML = '<div class="incorrect">Please select an answer.</div>';
+            }
+
+            startTime = new Date().getTime();
+        }
+
+        function getExplanation(questionId, correctOption) {
+            const explanations = {
+                'q1': 'The passage mentions that online platforms offer flexibility that traditional classrooms cannot provide.',
+                'q2': 'The passage highlights that maintaining quality education is a significant challenge in online education.',
+                'q3': 'The passage raises concerns about the digital divide, as not all students have equal access to the necessary tools and resources.',
+                'q4': 'The passage suggests that ensuring student engagement remains a significant challenge in online education.',
+                'q5': 'The passage implies that equal access to digital tools and resources is necessary for effective online education.'
+            };
+            return explanations[questionId];
+        }
+    </script>
+</head>
+<body>
+    <h1>Writing Passage</h1>
+    <p>The <u>growth</u> of online education has been exponential in recent years, fundamentally changing how students and teachers interact. Online platforms enable <u>students</u> to learn from anywhere, offering flexibility that traditional classrooms cannot provide. However, challenges such as ensuring <u>student engagement</u> and maintaining quality education remain significant hurdles. The rapid adoption of technology in education has also raised concerns about the digital divide, as not all students have equal access to the necessary tools and resources<sup>1</sup>.</p>
+
+    <h2>Questions:</h2>
+
+    <div id="question1">
+        <p>1. What is one advantage of online education mentioned in the passage?</p>
+        (A) <input type="radio" name="q1" value="A"> Increased cost of education<br>
+        (B) <input type="radio" name="q1" value="B"> Flexibility in learning<br>
+        (C) <input type="radio" name="q1" value="C"> Limited interaction with teachers<br>
+        (D) <input type="radio" name="q1" value="D"> Lack of student engagement<br>
+        <button onclick="validateAnswer('q1', 'B')">Submit</button>
+        <div id="q1-response"></div>
+    </div>
+
+    <div id="question2">
+        <p>2. What is a challenge of online education highlighted in the passage?</p>
+        (A) <input type="radio" name="q2" value="A"> Lack of flexibility<br>
+        (B) <input type="radio" name="q2" value="B"> Increased access to resources<br>
+        (C) <input type="radio" name="q2" value="C"> Maintaining quality education<br>
+        (D) <input type="radio" name="q2" value="D"> More in-class discussions<br>
+        <button onclick="validateAnswer('q2', 'C')">Submit</button>
+        <div id="q2-response"></div>
+    </div>
+
+    <div id="question3">
+        <p>3. According to the passage, what issue does the rapid adoption of technology in education raise?</p>
+        (A) <input type="radio" name="q3" value="A"> Improved student engagement<br>
+        (B) <input type="radio" name="q3" value="B"> Increased educational costs<br>
+        (C) <input type="radio" name="q3" value="C"> The digital divide<br>
+        (D) <input type="radio" name="q3" value="D"> Enhanced teacher-student interaction<br>
+        <button onclick="validateAnswer('q3', 'C')">Submit</button>
+        <div id="q3-response"></div>
+    </div>
+
+    <div id="question4">
+        <p>4. What does the passage suggest about student engagement in online education?</p>
+        (A) <input type="radio" name="q4" value="A"> It is not a significant challenge.<br>
+        (B) <input type="radio" name="q4" value="B"> It is a key advantage.<br>
+        (C) <input type="radio" name="q4" value="C"> It is easy to ensure.<br>
+        (D) <input type="radio" name="q4" value="D"> It remains a significant challenge.<br>
+        <button onclick="validateAnswer('q4', 'D')">Submit</button>
+        <div id="q4-response"></div>
+    </div>
+
+    <div id="question5">
+        <p>5. What does the passage imply is necessary for effective online education?</p>
+        (A) <input type="radio" name="q5" value="A"> More traditional classrooms<br>
+        (B) <input type="radio" name="q5" value="B"> Equal access to digital tools and resources<br>
+        (C) <input type="radio" name="q5" value="C"> Increased costs<br>
+        (D) <input type="radio" name="q5" value="D"> Less teacher-student interaction<br>
+        <button onclick="validateAnswer('q5', 'B')">Submit</button>
+        <div id="q5-response"></div>
+    </div>
+</body>
+</html>

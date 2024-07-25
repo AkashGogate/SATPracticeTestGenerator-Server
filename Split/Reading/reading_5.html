@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reading Practice Problem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .response {
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function startTime() {
+            window.startTime = new Date().getTime();
+        }
+
+        function checkAnswer(questionNum, correctAnswer, explanation) {
+            var radios = document.getElementsByName('question' + questionNum);
+            var selected;
+            for (var i = 0, length = radios.length; i < length; i++) {
+                if (radios[i].checked) {
+                    selected = radios[i].value;
+                    break;
+                }
+            }
+            var endTime = new Date().getTime();
+            var timeTaken = ((endTime - window.startTime) / 1000).toFixed(2);
+            
+            var resultDiv = document.getElementById('result' + questionNum);
+            resultDiv.innerHTML = '';
+
+            if (selected === correctAnswer) {
+                resultDiv.innerHTML = "<span style='color: green;'>Correct!</span>";
+            } else {
+                resultDiv.innerHTML = "<span style='color: red;'>Incorrect! " + explanation + "</span>";
+            }
+            resultDiv.innerHTML += "<br><b>Time Taken:</b> " + timeTaken + " seconds";
+        }
+
+        window.onload = function() {
+            startTime();
+        }
+    </script>
+</head>
+<body>
+    <h1>Reading Passage</h1>
+    <p><sup>1</sup>Since the dawn of humanity, the night sky has been a source of wonder and mystery. Ancients stared up at the stars†involved in myth†to navigate and tell time.</p>
+    <p><sup>5</sup>Over the centuries, our understanding of astronomy has grown exponentially. The invention of the telescope in the early 17th century allowed humans to study celestial bodies more intimately.</p>
+    <p><sup>9</sup>Galileo Galilei, using one of these telescopes, discovered moons orbiting Jupiter, challenging prior geocentric models of the universe.</p>
+    <p><sup>13</sup>In the 20th century, the development of space exploration technology further expanded our reach beyond the Earth.</p>
+    <p><sup>16</sup>1969 marked a significant milestone, as astronaut Neil Armstrong became the first human to set foot on the moon, symbolizing scientific and exploratory progress.</p>
+    <p><sup>20</sup>Today, with advancements in technology, astronomers continue to make groundbreaking discoveries, exploring distant planets and galaxies that were once beyond our reach.</p>
+
+    <div class="question">
+        <p>Please answer the following questions:</p>
+        <h3>Question 1</h3>
+        <p>Who was the first human to set foot on the moon?</p>
+        <input type="radio" name="question1" value="A"> Neil Armstrong<br>
+        <input type="radio" name="question1" value="B"> Buzz Aldrin<br>
+        <input type="radio" name="question1" value="C"> Michael Collins<br>
+        <input type="radio" name="question1" value="D"> Yuri Gagarin<br>
+        <button onclick="checkAnswer(1, 'A', 'Neil Armstrong was the first human to set foot on the moon in 1969.')">Submit</button>
+        <div id="result1" class="response"></div>
+    </div>
+
+    <div class="question">
+        <h3>Question 2</h3>
+        <p>What invention in the early 17th century allowed humans to study celestial bodies more intimately?</p>
+        <input type="radio" name="question2" value="A"> Microscope<br>
+        <input type="radio" name="question2" value="B"> Telescope<br>
+        <input type="radio" name="question2" value="C"> Astrolabe<br>
+        <input type="radio" name="question2" value="D"> Sextant<br>
+        <button onclick="checkAnswer(2, 'B', 'The invention of the telescope in the early 17th century allowed humans to study celestial bodies more intimately.')">Submit</button>
+        <div id="result2" class="response"></div>
+    </div>
+
+    <div class="question">
+        <h3>Question 3</h3>
+        <p>What significant discovery did Galileo Galilei make using a telescope?</p>
+        <input type="radio" name="question3" value="A"> Rings of Saturn<br>
+        <input type="radio" name="question3" value="B"> Craters on the moon<br>
+        <input type="radio" name="question3" value="C"> Moons orbiting Jupiter<br>
+        <input type="radio" name="question3" value="D"> Comet Halley<br>
+        <button onclick="checkAnswer(3, 'C', 'Galileo Galilei discovered moons orbiting Jupiter, challenging prior geocentric models of the universe.')">Submit</button>
+        <div id="result3" class="response"></div>
+    </div>
+
+    <div class="question">
+        <h3>Question 4</h3>
+        <p>In which year did the first human set foot on the moon?</p>
+        <input type="radio" name="question4" value="A"> 1979<br>
+        <input type="radio" name="question4" value="B"> 1969<br>
+        <input type="radio" name="question4" value="C"> 1949<br>
+        <input type="radio" name="question4" value="D"> 1989<br>
+        <button onclick="checkAnswer(4, 'B', '1969 marked a significant milestone as astronaut Neil Armstrong became the first human to set foot on the moon.')">Submit</button>
+        <div id="result4" class="response"></div>
+    </div>
+
+    <div class="question">
+        <h3>Question 5</h3>
+        <p>What development in the 20th century further expanded our reach beyond the Earth?</p>
+        <input type="radio" name="question5" value="A"> Development of thermometers<br>
+        <input type="radio" name="question5" value="B"> Development of the printing press<br>
+        <input type="radio" name="question5" value="C"> Development of space exploration technology<br>
+        <input type="radio" name="question5" value="D"> Development of trains<br>
+        <button onclick="checkAnswer(5, 'C', 'In the 20th century, the development of space exploration technology further expanded our reach beyond the Earth.')">Submit</button>
+        <div id="result5" class="response"></div>
+    </div>
+</body>
+</html>

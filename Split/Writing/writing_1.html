@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Passage Practice</title>
+    <style>
+        p {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+        .question {
+            margin-top: 10px;
+        }
+        .question input[type="radio"] {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            margin-top: 10px;
+        }
+        #result {
+            margin-top: 10px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .time-taken {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        let startTime;
+
+        window.onload = function() {
+            startTime = new Date().getTime();
+        };
+
+        function submitAnswer(qNum, correctAnswer, explanation) {
+            const resultDiv = document.getElementById("result" + qNum);
+            const radios = document.getElementsByName("question" + qNum);
+            let selectedAnswer;
+
+            for (let i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    selectedAnswer = radios[i].value;
+                    break;
+                }
+            }
+
+            const endTime = new Date().getTime();
+            const timeTaken = Math.floor((endTime - startTime) / 1000);
+
+            if (resultDiv) {
+                resultDiv.innerHTML = "";
+            }
+
+            if (selectedAnswer === correctAnswer) {
+                resultDiv.innerHTML = `<span class='correct'>Correct!</span><br><span class='time-taken'>Time Taken: ${timeTaken} seconds</span>`;
+            } else {
+                resultDiv.innerHTML = `<span class='incorrect'>Incorrect. The correct answer is ${correctAnswer}. ${explanation}</span><br><span class='time-taken'>Time Taken: ${timeTaken} seconds</span>`;
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h1>Writing Practice Passage</h1>
+<p>
+    The advances in modern <u>technology</u> have significantly impacted various industries.<sup>1</sup> In particular, the field of medical diagnostics has seen remarkable improvements. Traditional diagnostic methods used to rely heavily on subjective assessments, but now, due to technological innovation, there are more <u>accurate</u> and <u>data-driven</u> diagnostics available.<sup>2</sup> These advances not only increase the reliability of medical diagnoses but also enhance the overall efficiency of healthcare delivery. Another sector that has benefited tremendously from modern technology is education.<sup>3</sup> Digital learning platforms and interactive tools have revolutionized the way students learn and interact with academic content. Additionally, the increased accessibility afforded by these technologies ensures that education is more inclusive.<sup>4</sup>
+</p>
+
+<div class="question">
+    <p>1. What does the passage primarily discuss?</p>
+    <form>
+        <input type="radio" name="question1" value="A"> (A) Historical events <br>
+        <input type="radio" name="question1" value="B"> (B) Technological impacts <br>
+        <input type="radio" name="question1" value="C"> (C) Medical practices <br>
+        <input type="radio" name="question1" value="D"> (D) Education policies <br>
+    </form>
+    <button class="submit-btn" onclick="submitAnswer(1, 'B', 'The passage discusses the impacts of modern technology on various fields.');">Submit</button>
+    <div id="result1"></div>
+</div>
+
+<div class="question">
+    <p>2. Which field is mentioned as having seen improvements due to technological innovation?</p>
+    <form>
+        <input type="radio" name="question2" value="A"> (A) Architecture <br>
+        <input type="radio" name="question2" value="B"> (B) Medical diagnostics <br>
+        <input type="radio" name="question2" value="C"> (C) Agriculture <br>
+        <input type="radio" name="question2" value="D"> (D) Fine arts <br>
+    </form>
+    <button class="submit-btn" onclick="submitAnswer(2, 'B', 'The passage specifically mentions advancements in medical diagnostics.');">Submit</button>
+    <div id="result2"></div>
+</div>
+
+<div class="question">
+    <p>3. How has modern technology impacted education according to the passage?</p>
+    <form>
+        <input type="radio" name="question3" value="A"> (A) It has increased class sizes <br>
+        <input type="radio" name="question3" value="B"> (B) It has revolutionized learning <br>
+        <input type="radio" name="question3" value="C"> (C) It has reduced the need for teachers <br>
+        <input type="radio" name="question3" value="D"> (D) It has made textbooks obsolete <br>
+    </form>
+    <button class="submit-btn" onclick="submitAnswer(3, 'B', 'The passage states that digital learning platforms and tools have revolutionized education.');">Submit</button>
+    <div id="result3"></div>
+</div>
+
+<div class="question">
+    <p>4. What benefit does increased accessibility in education provide?</p>
+    <form>
+        <input type="radio" name="question4" value="A"> (A) Better exam results <br>
+        <input type="radio" name="question4" value="B"> (B) More inclusive education <br>
+        <input type="radio" name="question4" value="C"> (C) Lower tuition fees <br>
+        <input type="radio" name="question4" value="D"> (D) More traditional teaching <br>
+    </form>
+    <button class="submit-btn" onclick="submitAnswer(4, 'B', 'The passage mentions that increased accessibility ensures more inclusive education.');">Submit</button>
+    <div id="result4"></div>
+</div>
+
+<div class="question">
+    <p>5. Which of the following words in the passage is <u>referenced</u> with a footnote?</p>
+    <form>
+        <input type="radio" name="question5" value="A"> (A) Innovation <br>
+        <input type="radio" name="question5" value="B"> (B) Diagnostic <br>
+        <input type="radio" name="question5" value="C"> (C) Technology <br>
+        <input type="radio" name="question5" value="D"> (D) Health <br>
+    </form>
+    <button class="submit-btn" onclick="submitAnswer(5, 'C', 'The word technology is referenced with a superscript footnote in the passage.');">Submit</button>
+    <div id="result5"></div>
+</div>
+
+</body>
+</html>

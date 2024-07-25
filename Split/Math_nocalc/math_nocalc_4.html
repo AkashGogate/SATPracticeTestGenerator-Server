@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Math Practice</title>
+    <style>
+        .question {
+            margin-bottom: 20px;
+        }
+        .answer {
+            margin-left: 20px;
+        }
+        .result {
+            margin-top: 10px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .time-taken {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        let startTime;
+
+        window.onload = function() {
+            startTime = new Date().getTime();
+        };
+
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="question${questionId}"]:checked`);
+            const resultDiv = document.getElementById(`result${questionId}`);
+            const timeTakenDiv = document.getElementById(`timeTaken${questionId}`);
+            const currentTime = new Date().getTime();
+            const timeTaken = ((currentTime - startTime) / 1000).toFixed(2);
+
+            resultDiv.innerHTML = '';
+            timeTakenDiv.innerHTML = '';
+
+            if (selectedAnswer) {
+                if (selectedAnswer.value === correctAnswer) {
+                    resultDiv.innerHTML = 'Correct!';
+                    resultDiv.className = 'result correct';
+                } else {
+                    resultDiv.innerHTML = `Incorrect. The correct answer is ${correctAnswer}.`;
+                    resultDiv.className = 'result incorrect';
+                }
+                timeTakenDiv.innerHTML = `Time Taken: ${timeTaken} seconds`;
+            } else {
+                resultDiv.innerHTML = 'Please select an answer.';
+                resultDiv.className = 'result incorrect';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>SAT Math Practice</h1>
+    <div class="question">
+        <p>1. The graph below shows the function ( y = 2x^2 - 4x + 1 ). What is the value of ( y ) when ( x = 3 )?</p>
+        <svg width="400" height="300">
+            <line x1="50" y1="250" x2="350" y2="250" stroke="black" />
+            <line x1="200" y1="50" x2="200" y2="250" stroke="black" />
+            <text x="360" y="255" font-size="12">x</text>
+            <text x="190" y="40" font-size="12">y</text>
+            <text x="190" y="260" font-size="12">0</text>
+            <text x="240" y="260" font-size="12">1</text>
+            <text x="290" y="260" font-size="12">2</text>
+            <text x="340" y="260" font-size="12">3</text>
+            <text x="140" y="260" font-size="12">-1</text>
+            <text x="90" y="260" font-size="12">-2</text>
+            <text x="40" y="260" font-size="12">-3</text>
+            <text x="210" y="200" font-size="12">1</text>
+            <text x="210" y="150" font-size="12">2</text>
+            <text x="210" y="100" font-size="12">3</text>
+            <text x="210" y="50" font-size="12">4</text>
+            <text x="210" y="250" font-size="12">0</text>
+            <polyline points="50,250 100,200 150,150 200,100 250,150 300,200 350,250" fill="none" stroke="blue" />
+        </svg>
+        <div class="answer">
+            <input type="radio" name="question1" value="A"> (A) 7<br>
+            <input type="radio" name="question1" value="B"> (B) 8<br>
+            <input type="radio" name="question1" value="C"> (C) 9<br>
+            <input type="radio" name="question1" value="D"> (D) 10<br>
+        </div>
+        <button onclick="checkAnswer(1, 'C')">Submit</button>
+        <div id="result1" class="result"></div>
+        <div id="timeTaken1" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>2. Solve for ( x ): ( |x + 3| = 6 )</p>
+        <div class="answer">
+            <input type="radio" name="question2" value="A"> (A) 2<br>
+            <input type="radio" name="question2" value="B"> (B) 3<br>
+            <input type="radio" name="question2" value="C"> (C) 9<br>
+            <input type="radio" name="question2" value="D"> (D) 6<br>
+        </div>
+        <button onclick="checkAnswer(2, 'A')">Submit</button>
+        <div id="result2" class="result"></div>
+        <div id="timeTaken2" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>3. What is the vertex of the parabola ( y = 2x^2 - 4x + 1 )?</p>
+        <div class="answer">
+            <input type="radio" name="question3" value="A"> (A) (1, -1)<br>
+            <input type="radio" name="question3" value="B"> (B) (1, -3)<br>
+            <input type="radio" name="question3" value="C"> (C) (2, -1)<br>
+            <input type="radio" name="question3" value="D"> (D) (2, -3)<br>
+        </div>
+        <button onclick="checkAnswer(3, 'A')">Submit</button>
+        <div id="result3" class="result"></div>
+        <div id="timeTaken3" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>4. What is the axis of symmetry for the function ( y = 2x^2 - 4x + 1 )?</p>
+        <div class="answer">
+            <input type="radio" name="question4" value="A"> (A) x = 1<br>
+            <input type="radio" name="question4" value="B"> (B) x = 2<br>
+            <input type="radio" name="question4" value="C"> (C) y = 1<br>
+            <input type="radio" name="question4" value="D"> (D) y = 2<br>
+        </div>
+        <button onclick="checkAnswer(4, 'A')">Submit</button>
+        <div id="result4" class="result"></div>
+        <div id="timeTaken4" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>5. What is the y-intercept of the function ( y = 2x^2 - 4x + 1 )?</p>
+        <div class="answer">
+            <input type="radio" name="question5" value="A"> (A) 1<br>
+            <input type="radio" name="question5" value="B"> (B) -1<br>
+            <input type="radio" name="question5" value="C"> (C) 0<br>
+            <input type="radio" name="question5" value="D"> (D) 2<br>
+        </div>
+        <button onclick="checkAnswer(5, 'A')">Submit</button>
+        <div id="result5" class="result"></div>
+        <div id="timeTaken5" class="time-taken"></div>
+    </div>
+</body>
+</html>

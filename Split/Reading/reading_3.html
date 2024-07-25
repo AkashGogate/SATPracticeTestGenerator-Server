@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reading Practice</title>
+<script>
+let startTime;
+function onRadioClick() { startTime = performance.now(); }
+
+function checkAnswer(questionId, correctOption) {
+    const selectedOption = document.querySelector(`input[name="q${questionId}"]:checked`);
+    
+    const result = document.getElementById(`result${questionId}`);
+    result.style.color = "red";
+    
+    const timeTaken = document.getElementById(`timeTaken${questionId}`);
+    timeTaken.style.color = "black";
+    
+    result.innerHTML = "";
+    timeTaken.innerHTML = "";
+    
+    if (selectedOption) {
+        const endTime = performance.now(); 
+        const timeDiff = ((endTime - startTime) / 1000).toFixed(2); 
+
+        if (selectedOption.value === correctOption) {
+            result.style.color = "green";
+            result.innerHTML = "Correct!";
+        } else {
+            result.innerHTML = `Incorrect. The correct answer is ${correctOption}.`;
+        }
+        timeTaken.innerHTML = `<b>Time Taken:</b> ${timeDiff} seconds`;
+    } else {
+        result.innerHTML = "Please select an answer.";
+    }
+}
+</script>
+</head>
+<body>
+
+<h1>READING PRACTICE</h1>
+<p>Questions 1 – 5:</p><p>This passage is adapted from Jane Austen, "Pride and Prejudice". ©1813 by Jane Austen.</p><p><br/></p><p>(1) It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.<sup>1</sup> However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters.<sup>2</sup> "My dear Mr. Bennet," said his lady to him one day, "have you heard that Netherfield Park is let at last?"</p>
+
+<p>(2) <sup>3</sup>Mr. Bennet replied that he had not.</p>
+<p>(3) <sup>4</sup>"But it is," returned she; "for Mrs. Long has just been here, and she told me all about it."</p>
+<p>(4) <sup>5</sup>Mr. Bennet made no answer.</p>
+<p>(5) <sup>6</sup>"Do not you want to know who has taken it?" cried his wife impatiently.</p>
+<p>(6) <sup>7</sup>"You want to tell me, and I have no objection to hearing it."</p>
+<p>(7) <sup>8</sup>This was invitation enough.</p>
+<p>(8) <sup>9</sup>"Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so much delighted with it that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week."</p>
+<p>(9) <sup>10</sup>"What is his name?"</p>
+<p>(10) <sup>11</sup>"Bingley."</p>
+<p>(11) <sup>12</sup>"Is he married or single?"</p>
+<p>(12) <sup>13</sup>"Oh! Single, my dear, to be sure! A single man of large fortune; four or five thousand a year. What a fine thing for our girls!"</p>
+<p>(13) <sup>14</sup>"How so? How can it affect them?"</p>
+<p>(14) <sup>15</sup>"My dear Mr. Bennet," replied his wife, "how can you be so tiresome! You must know that I am thinking of his marrying one of them."</p>
+
+<br/>
+
+<form>
+    <p><b>Question 1:</b> According to the passage, Mrs. Bennet believes that the news about Mr. Bingley’s arrival at Netherfield is of importance because:</p>
+    <input type="radio" name="q1" value="a" onclick="onRadioClick()"> (A) He is an eligible bachelor who might marry one of her daughters.<br>
+    <input type="radio" name="q1" value="b" onclick="onRadioClick()"> (B) He might raise the value of nearby properties.<br>
+    <input type="radio" name="q1" value="c" onclick="onRadioClick()"> (C) He might become friends with Mr. Bennet.<br>
+    <input type="radio" name="q1" value="d" onclick="onRadioClick()"> (D) He might become a prominent figure in the local community.<br>
+    <button type="button" onclick="checkAnswer(1, 'a')">Submit</button>
+    <p id="result1"></p>
+    <p id="timeTaken1"></p>
+</form>
+
+<br/>
+
+<form>
+    <p><b>Question 2:</b> What does Mr. Bennet’s reaction to his wife’s news about Netherfield Park suggest about his character?</p>
+    <input type="radio" name="q2" value="a" onclick="onRadioClick()"> (A) He is enthusiastic about gossip.<br>
+    <input type="radio" name="q2" value="b" onclick="onRadioClick()"> (B) He is indifferent to the news.<br>
+    <input type="radio" name="q2" value="c" onclick="onRadioClick()"> (C) He is critical of his wife.<br>
+    <input type="radio" name="q2" value="d" onclick="onRadioClick()"> (D) He is very curious about the new tenant.<br>
+    <button type="button" onclick="checkAnswer(2, 'b')">Submit</button>
+    <p id="result2"></p>
+    <p id="timeTaken2"></p>
+</form>
+
+<br/>
+
+<form>
+    <p><b>Question 3:</b> The phrase "invitation enough" in line 8 most nearly means:</p>
+    <input type="radio" name="q3" value="a" onclick="onRadioClick()"> (A) An invitation to a party.<br>
+    <input type="radio" name="q3" value="b" onclick="onRadioClick()"> (B) An acceptable reason.<br>
+    <input type="radio" name="q3" value="c" onclick="onRadioClick()"> (C) A cause to be curious.<br>
+    <input type="radio" name="q3" value="d" onclick="onRadioClick()"> (D) A sufficient prompt.<br>
+    <button type="button" onclick="checkAnswer(3, 'd')">Submit</button>
+    <p id="result3"></p>
+    <p id="timeTaken3"></p>
+</form>
+
+<br/>
+
+<form>
+    <p><b>Question 4:</b> What does the description of Mr. Bingley suggest about him?</p>
+    <input type="radio" name="q4" value="a" onclick="onRadioClick()"> (A) He is likely to be a proud and arrogant man.<br>
+    <input type="radio" name="q4" value="b" onclick="onRadioClick()"> (B) He has modest means but a generous nature.<br>
+    <input type="radio" name="q4" value="c" onclick="onRadioClick()"> (C) He is wealthy and considered an eligible bachelor.<br>
+    <input type="radio" name="q4" value="d" onclick="onRadioClick()"> (D) He is an elderly man looking for a quiet life.<br>
+    <button type="button" onclick="checkAnswer(4, 'c')">Submit</button>
+    <p id="result4"></p>
+    <p id="timeTaken4"></p>
+</form>
+
+<br/>
+
+<form>
+    <p><b>Question 5:</b> How does Mrs. Bennet’s attitude toward Mr. Bingley contrast with Mr. Bennet’s?</p>
+    <input type="radio" name="q5" value="a" onclick="onRadioClick()"> (A) Mrs. Bennet is indifferent, while Mr. Bennet is enthusiastic.<br>
+    <input type="radio" name="q5" value="b" onclick="onRadioClick()"> (B) Mrs. Bennet is critical, while Mr. Bennet is supportive.<br>
+    <input type="radio" name="q5" value="c" onclick="onRadioClick()"> (C) Mrs. Bennet is enthusiastic, while Mr. Bennet is indifferent.<br>
+    <input type="radio" name="q5" value="d" onclick="onRadioClick()"> (D) Mrs. Bennet is curious, while Mr. Bennet is dismissive.<br>
+    <button type="button" onclick="checkAnswer(5, 'c')">Submit</button>
+    <p id="result5"></p>
+    <p id="timeTaken5"></p>
+</form>
+
+</body>
+</html>

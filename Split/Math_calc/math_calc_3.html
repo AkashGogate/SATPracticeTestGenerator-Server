@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SAT Math Practice Problem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .answer {
+            margin-top: 10px;
+        }
+        .time-taken {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        let startTime;
+
+        window.onload = function() {
+            startTime = new Date().getTime();
+        };
+
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+            const resultDiv = document.getElementById(`result-${questionId}`);
+            const timeTakenDiv = document.getElementById(`time-taken-${questionId}`);
+            const currentTime = new Date().getTime();
+            const timeTaken = ((currentTime - startTime) / 1000).toFixed(2);
+
+            resultDiv.innerHTML = '';
+            timeTakenDiv.innerHTML = '';
+
+            if (selectedAnswer) {
+                if (selectedAnswer.value === correctAnswer) {
+                    resultDiv.innerHTML = `<span style="color: green;">Correct!</span>`;
+                } else {
+                    resultDiv.innerHTML = `<span style="color: red;">Incorrect. The correct answer is ${correctAnswer}.</span>`;
+                }
+                timeTakenDiv.innerHTML = `<span class="time-taken">Time Taken: ${timeTaken} seconds</span>`;
+            } else {
+                resultDiv.innerHTML = `<span style="color: red;">Please select an answer.</span>`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>SAT Math Practice Problem</h1>
+    <div class="question">
+        <p>The graph below shows the function ( y = 4 - x ). What is the value of ( y ) when ( x = 2 )?</p>
+        <svg width="400" height="400">
+            <line x1="50" y1="350" x2="350" y2="350" stroke="black" />
+            <line x1="50" y1="350" x2="50" y2="50" stroke="black" />
+            <line x1="50" y1="350" x2="350" y2="50" stroke="blue" />
+            <text x="360" y="355" font-size="12">x</text>
+            <text x="40" y="40" font-size="12">y</text>
+            <text x="45" y="355" font-size="12">0</text>
+            <text x="145" y="355" font-size="12">1</text>
+            <text x="245" y="355" font-size="12">2</text>
+            <text x="345" y="355" font-size="12">3</text>
+            <text x="45" y="255" font-size="12">1</text>
+            <text x="45" y="155" font-size="12">2</text>
+            <text x="45" y="55" font-size="12">3</text>
+        </svg>
+        <form>
+            <input type="radio" name="q1" value="1"> 1<br>
+            <input type="radio" name="q1" value="2"> 2<br>
+            <input type="radio" name="q1" value="3"> 3<br>
+            <input type="radio" name="q1" value="4"> 4<br>
+            <button type="button" onclick="checkAnswer('q1', '2')">Submit</button>
+        </form>
+        <div id="result-q1" class="answer"></div>
+        <div id="time-taken-q1" class="answer"></div>
+    </div>
+
+    <div class="question">
+        <p>What is the positive solution to the equation ( |x + 3| = 6 )?</p>
+        <form>
+            <input type="radio" name="q2" value="2"> 2<br>
+            <input type="radio" name="q2" value="3"> 3<br>
+            <input type="radio" name="q2" value="9"> 9<br>
+            <input type="radio" name="q2" value="6"> 6<br>
+            <button type="button" onclick="checkAnswer('q2', '3')">Submit</button>
+        </form>
+        <div id="result-q2" class="answer"></div>
+        <div id="time-taken-q2" class="answer"></div>
+    </div>
+
+    <div class="question">
+        <p>If ( f(x) = 2x + 1 ), what is ( f(3) )?</p>
+        <form>
+            <input type="radio" name="q3" value="5"> 5<br>
+            <input type="radio" name="q3" value="6"> 6<br>
+            <input type="radio" name="q3" value="7"> 7<br>
+            <input type="radio" name="q3" value="8"> 8<br>
+            <button type="button" onclick="checkAnswer('q3', '7')">Submit</button>
+        </form>
+        <div id="result-q3" class="answer"></div>
+        <div id="time-taken-q3" class="answer"></div>
+    </div>
+
+    <div class="question">
+        <p>What is the value of ( 3^2 )?</p>
+        <form>
+            <input type="radio" name="q4" value="6"> 6<br>
+            <input type="radio" name="q4" value="9"> 9<br>
+            <input type="radio" name="q4" value="12"> 12<br>
+            <input type="radio" name="q4" value="15"> 15<br>
+            <button type="button" onclick="checkAnswer('q4', '9')">Submit</button>
+        </form>
+        <div id="result-q4" class="answer"></div>
+        <div id="time-taken-q4" class="answer"></div>
+    </div>
+
+    <div class="question">
+        <p>What is the slope of the line ( y = 4 - x )?</p>
+        <form>
+            <input type="radio" name="q5" value="1"> 1<br>
+            <input type="radio" name="q5" value="2"> 2<br>
+            <input type="radio" name="q5" value="-1"> -1<br>
+            <input type="radio" name="q5" value="-2"> -2<br>
+            <button type="button" onclick="checkAnswer('q5', '-1')">Submit</button>
+        </form>
+        <div id="result-q5" class="answer"></div>
+        <div id="time-taken-q5" class="answer"></div>
+    </div>
+</body>
+</html>

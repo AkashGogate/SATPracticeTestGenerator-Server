@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Practice Problem</title>
+    <style>
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            margin: 0 0 10px;
+        }
+        .feedback {
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        let startTime;
+
+        window.onload = function() {
+            startTime = new Date().getTime();
+        };
+
+        function submitAnswer(questionId, correctOption, explanation) {
+            const selectedOption = document.querySelector(`input[name="q${questionId}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionId}`);
+            const timeTaken = (new Date().getTime() - startTime) / 1000;
+
+            feedback.innerHTML = '';
+            
+            if (selectedOption) {
+                if (selectedOption.value === correctOption) {
+                    feedback.innerHTML = `<span style="color: green;">Correct! </span>`;
+                } else {
+                    feedback.innerHTML = `<span style="color: red;">Incorrect. ${explanation} </span>`;
+                }
+                feedback.innerHTML += `<strong>Time Taken: </strong>${timeTaken} seconds`;
+            } else {
+                alert("Please select an answer.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Reading Practice Passage</h1>
+    <p><sup>1</sup>In the early days of space exploration, scientists faced numerous challenges in their quest to understand the mysteries of the universe. <sup>2</sup>One of the most significant achievements was the launch of the Hubble Space Telescope, which has provided unprecedented views of distant galaxies and contributed to our understanding of the cosmos.</p>
+    <p><sup>3</sup>Before the Hubble, our observations from Earth were limited by atmospheric distortion and light pollution. <sup>4</sup>The Hubble Space Telescope, positioned above Earth's atmosphere, has given astronomers the ability to capture clearer and more detailed images.</p>
+    <p><sup>5</sup>Since its launch, the Hubble has captured images of star formation, planetary systems, and other celestial phenomena. <sup>6</sup>These images have not only been scientifically valuable but have also inspired awe and fascination among the general public.</p>
+    <p><sup>7</sup>The Hubble's observations have led to groundbreaking discoveries, such as measurements of the rate of the universe's expansion and the identification of black holes. <sup>8</sup>Despite its age, the Hubble continues to be a vital tool for astronomers and will remain in service until a more advanced telescope takes its place.</p>
+
+    <div class="question" id="question1">
+        <p>1. What was one of the most significant achievements in early space exploration mentioned in the passage?</p>
+        <label><input type="radio" name="q1" value="A"> (A) Landing on the Moon</label><br>
+        <label><input type="radio" name="q1" value="B"> (B) Launch of the Hubble Space Telescope</label><br>
+        <label><input type="radio" name="q1" value="C"> (C) Sending rovers to Mars</label><br>
+        <label><input type="radio" name="q1" value="D"> (D) Establishing the International Space Station</label><br>
+        <button type="button" onclick="submitAnswer(1, 'B', 'The correct answer is B: the launch of the Hubble Space Telescope, as stated in line 2.')">Submit</button>
+        <div id="feedback1" class="feedback"></div>
+    </div>
+
+    <div class="question" id="question2">
+        <p>2. According to the passage, what limitation did Earth's atmosphere impose on astral observations?</p>
+        <label><input type="radio" name="q2" value="A"> (A) Lack of detail</label><br>
+        <label><input type="radio" name="q2" value="B"> (B) Atmospheric distortion</label><br>
+        <label><input type="radio" name="q2" value="C"> (C) Inability to view distant galaxies</label><br>
+        <label><input type="radio" name="q2" value="D"> (D) Difficulty in capturing star formation</label><br>
+        <button type="button" onclick="submitAnswer(2, 'B', 'The correct answer is B: atmospheric distortion, as mentioned in line 3.')">Submit</button>
+        <div id="feedback2" class="feedback"></div>
+    </div>
+
+    <div class="question" id="question3">
+        <p>3. What celestial phenomena has the Hubble Space Telescope captured since its launch?</p>
+        <label><input type="radio" name="q3" value="A"> (A) Alien life</label><br>
+        <label><input type="radio" name="q3" value="B"> (B) Star formation and planetary systems</label><br>
+        <label><input type="radio" name="q3" value="C"> (C) The surface of the Sun</label><br>
+        <label><input type="radio" name="q3" value="D"> (D) The Asteroid Belt</label><br>
+        <button type="button" onclick="submitAnswer(3, 'B', 'The correct answer is B: star formation and planetary systems, as stated in line 5.')">Submit</button>
+        <div id="feedback3" class="feedback"></div>
+    </div>
+
+    <div class="question" id="question4">
+        <p>4. Besides scientific value, what other impact have the Hubble's images had?</p>
+        <label><input type="radio" name="q4" value="A"> (A) They have increased the telescope's operational lifespan</label><br>
+        <label><input type="radio" name="q4" value="B"> (B) They have inspired awe and fascination among the public</label><br>
+        <label><input type="radio" name="q4" value="C"> (C) They have helped develop new observation techniques</label><br>
+        <label><input type="radio" name="q4" value="D"> (D) They have provided data for technological advancements</label><br>
+        <button type="button" onclick="submitAnswer(4, 'B', 'The correct answer is B: they have inspired awe and fascination among the public, as noted in line 6.')">Submit</button>
+        <div id="feedback4" class="feedback"></div>
+    </div>
+
+    <div class="question" id="question5">
+        <p>5. What is one of the groundbreaking discoveries made by the Hubble Space Telescope?</p>
+        <label><input type="radio" name="q5" value="A"> (A) Discovery of the Milky Way</label><br>
+        <label><input type="radio" name="q5" value="B"> (B) Identification of black holes</label><br>
+        <label><input type="radio" name="q5" value="C"> (C) Discovery of Earth-like planets</label><br>
+        <label><input type="radio" name="q5" value="D"> (D) Observation of Supernovas</label><br>
+        <button type="button" onclick="submitAnswer(5, 'B', 'The correct answer is B: the identification of black holes, as stated in line 7.')">Submit</button>
+        <div id="feedback5" class="feedback"></div>
+    </div>
+</body>
+</html>

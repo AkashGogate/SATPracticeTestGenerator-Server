@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SAT Math Practice Problem</title>
+    <style>
+        .question {
+            margin-bottom: 20px;
+        }
+        .answer {
+            color: green;
+        }
+        .wrong-answer {
+            color: red;
+        }
+        .time-taken {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        let startTime;
+
+        window.onload = function() {
+            startTime = new Date().getTime();
+        };
+
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+            const resultDiv = document.getElementById(`result-${questionId}`);
+            const timeTakenDiv = document.getElementById(`time-taken-${questionId}`);
+            const currentTime = new Date().getTime();
+            const timeTaken = ((currentTime - startTime) / 1000).toFixed(2);
+
+            resultDiv.innerHTML = '';
+            timeTakenDiv.innerHTML = '';
+
+            if (selectedOption) {
+                if (selectedOption.value === correctAnswer) {
+                    resultDiv.innerHTML = 'Correct!';
+                    resultDiv.className = 'answer';
+                } else {
+                    resultDiv.innerHTML = `Incorrect. The correct answer is ${correctAnswer}.`;
+                    resultDiv.className = 'wrong-answer';
+                }
+                timeTakenDiv.innerHTML = `Time Taken: ${timeTaken} seconds`;
+            } else {
+                resultDiv.innerHTML = 'Please select an answer.';
+                resultDiv.className = 'wrong-answer';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>SAT Math Practice Problem</h1>
+    <div class="question">
+        <p>The graph below shows the function ( y = 2x^2 - 3x + 1 ). What is the value of ( y ) when ( x = 2 )?</p>
+        <svg width="400" height="300">
+            <line x1="50" y1="250" x2="350" y2="250" stroke="black" />
+            <line x1="200" y1="50" x2="200" y2="250" stroke="black" />
+            <text x="360" y="255" font-size="12">x</text>
+            <text x="190" y="40" font-size="12">y</text>
+            <polyline points="50,250 100,200 150,150 200,100 250,150 300,200 350,250" fill="none" stroke="blue" />
+            <text x="90" y="220" font-size="12">-2</text>
+            <text x="140" y="170" font-size="12">-1</text>
+            <text x="190" y="120" font-size="12">0</text>
+            <text x="240" y="170" font-size="12">1</text>
+            <text x="290" y="220" font-size="12">2</text>
+        </svg>
+        <form>
+            <input type="radio" name="q1" value="A"> (A) 3<br>
+            <input type="radio" name="q1" value="B"> (B) 5<br>
+            <input type="radio" name="q1" value="C"> (C) 7<br>
+            <input type="radio" name="q1" value="D"> (D) 9<br>
+            <button type="button" onclick="checkAnswer('q1', 'C')">Submit</button>
+        </form>
+        <div id="result-q1"></div>
+        <div id="time-taken-q1" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>What is the vertex of the function ( y = 2x^2 - 3x + 1 )?</p>
+        <form>
+            <input type="radio" name="q2" value="A"> (A) (0, 1)<br>
+            <input type="radio" name="q2" value="B"> (B) (0.75, -0.125)<br>
+            <input type="radio" name="q2" value="C"> (C) (1.5, -1.25)<br>
+            <input type="radio" name="q2" value="D"> (D) (2, 3)<br>
+            <button type="button" onclick="checkAnswer('q2', 'B')">Submit</button>
+        </form>
+        <div id="result-q2"></div>
+        <div id="time-taken-q2" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>What is the y-intercept of the function ( y = 2x^2 - 3x + 1 )?</p>
+        <form>
+            <input type="radio" name="q3" value="A"> (A) 1<br>
+            <input type="radio" name="q3" value="B"> (B) -1<br>
+            <input type="radio" name="q3" value="C"> (C) 0<br>
+            <input type="radio" name="q3" value="D"> (D) 3<br>
+            <button type="button" onclick="checkAnswer('q3', 'A')">Submit</button>
+        </form>
+        <div id="result-q3"></div>
+        <div id="time-taken-q3" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>What is the axis of symmetry of the function ( y = 2x^2 - 3x + 1 )?</p>
+        <form>
+            <input type="radio" name="q4" value="A"> (A) x = 0<br>
+            <input type="radio" name="q4" value="B"> (B) x = 0.75<br>
+            <input type="radio" name="q4" value="C"> (C) x = 1.5<br>
+            <input type="radio" name="q4" value="D"> (D) x = 2<br>
+            <button type="button" onclick="checkAnswer('q4', 'B')">Submit</button>
+        </form>
+        <div id="result-q4"></div>
+        <div id="time-taken-q4" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>What is the value of ( y ) when ( x = -1 ) for the function ( y = 2x^2 - 3x + 1 )?</p>
+        <form>
+            <input type="radio" name="q5" value="A"> (A) 6<br>
+            <input type="radio" name="q5" value="B"> (B) 4<br>
+            <input type="radio" name="q5" value="C"> (C) 2<br>
+            <input type="radio" name="q5" value="D"> (D) 0<br>
+            <button type="button" onclick="checkAnswer('q5', 'A')">Submit</button>
+        </form>
+        <div id="result-q5"></div>
+        <div id="time-taken-q5" class="time-taken"></div>
+    </div>
+</body>
+</html>

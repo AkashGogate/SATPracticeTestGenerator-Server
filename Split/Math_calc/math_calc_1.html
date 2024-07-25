@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SAT Math Practice Problem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .answer {
+            margin-top: 10px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .time-taken {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        let startTime;
+
+        window.onload = function() {
+            startTime = new Date().getTime();
+        };
+
+        function checkAnswer(questionId, correctOption) {
+            const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+            const resultDiv = document.getElementById(`result-${questionId}`);
+            const timeTakenDiv = document.getElementById(`time-taken-${questionId}`);
+            const currentTime = new Date().getTime();
+            const timeTaken = ((currentTime - startTime) / 1000).toFixed(2);
+
+            resultDiv.innerHTML = '';
+            timeTakenDiv.innerHTML = '';
+
+            if (selectedOption) {
+                if (selectedOption.value === correctOption) {
+                    resultDiv.innerHTML = 'Correct!';
+                    resultDiv.className = 'correct';
+                } else {
+                    resultDiv.innerHTML = `Incorrect. The correct answer is ${correctOption}.`;
+                    resultDiv.className = 'incorrect';
+                }
+            } else {
+                resultDiv.innerHTML = 'Please select an answer.';
+                resultDiv.className = 'incorrect';
+            }
+
+            timeTakenDiv.innerHTML = `Time Taken: ${timeTaken} seconds`;
+        }
+    </script>
+</head>
+<body>
+    <h1>SAT Math Practice Problem</h1>
+    <div class="question">
+        <p>The graph below shows the function ( y = 4 - x ). Use the graph to answer the following questions:</p>
+        <svg width="400" height="400">
+            <line x1="50" y1="350" x2="350" y2="50" stroke="black" />
+            <line x1="50" y1="50" x2="50" y2="350" stroke="black" />
+            <line x1="50" y1="350" x2="350" y2="350" stroke="black" />
+            <text x="30" y="50" font-size="12">4</text>
+            <text x="30" y="150" font-size="12">3</text>
+            <text x="30" y="250" font-size="12">2</text>
+            <text x="30" y="350" font-size="12">1</text>
+            <text x="50" y="370" font-size="12">0</text>
+            <text x="150" y="370" font-size="12">1</text>
+            <text x="250" y="370" font-size="12">2</text>
+            <text x="350" y="370" font-size="12">3</text>
+        </svg>
+    </div>
+
+    <div class="question">
+        <p>1. What is the y-intercept of the graph?</p>
+        <input type="radio" name="q1" value="A"> A. 4<br>
+        <input type="radio" name="q1" value="B"> B. 3<br>
+        <input type="radio" name="q1" value="C"> C. 2<br>
+        <input type="radio" name="q1" value="D"> D. 1<br>
+        <button onclick="checkAnswer('q1', 'A')">Submit</button>
+        <div id="result-q1" class="answer"></div>
+        <div id="time-taken-q1" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>2. What is the x-intercept of the graph?</p>
+        <input type="radio" name="q2" value="A"> A. 4<br>
+        <input type="radio" name="q2" value="B"> B. 3<br>
+        <input type="radio" name="q2" value="C"> C. 2<br>
+        <input type="radio" name="q2" value="D"> D. 1<br>
+        <button onclick="checkAnswer('q2', 'A')">Submit</button>
+        <div id="result-q2" class="answer"></div>
+        <div id="time-taken-q2" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>3. What is the slope of the line?</p>
+        <input type="radio" name="q3" value="A"> A. -1<br>
+        <input type="radio" name="q3" value="B"> B. 1<br>
+        <input type="radio" name="q3" value="C"> C. 0<br>
+        <input type="radio" name="q3" value="D"> D. 4<br>
+        <button onclick="checkAnswer('q3', 'A')">Submit</button>
+        <div id="result-q3" class="answer"></div>
+        <div id="time-taken-q3" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>4. What is the value of y when x = 2?</p>
+        <input type="radio" name="q4" value="A"> A. 2<br>
+        <input type="radio" name="q4" value="B"> B. 3<br>
+        <input type="radio" name="q4" value="C"> C. 1<br>
+        <input type="radio" name="q4" value="D"> D. 0<br>
+        <button onclick="checkAnswer('q4', 'C')">Submit</button>
+        <div id="result-q4" class="answer"></div>
+        <div id="time-taken-q4" class="time-taken"></div>
+    </div>
+
+    <div class="question">
+        <p>5. What is the value of y when x = -1?</p>
+        <input type="radio" name="q5" value="A"> A. 5<br>
+        <input type="radio" name="q5" value="B"> B. 3<br>
+        <input type="radio" name="q5" value="C"> C. 4<br>
+        <input type="radio" name="q5" value="D"> D. 6<br>
+        <button onclick="checkAnswer('q5', 'A')">Submit</button>
+        <div id="result-q5" class="answer"></div>
+        <div id="time-taken-q5" class="time-taken"></div>
+    </div>
+</body>
+</html>

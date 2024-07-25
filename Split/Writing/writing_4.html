@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        let startTime;
+        window.onload = () => {
+            startTime = new Date().getTime();
+        };
+
+        function checkAnswer(questionNumber, correctAnswer) {
+            const userAnswer = document.querySelector(`input[name="question${questionNumber}"]:checked`).value;
+            const resultDiv = document.getElementById(`result${questionNumber}`);
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.innerHTML = `<span style='color:green;'>Correct!</span>`;
+            } else {
+                const explanation = document.getElementById(`explanation${questionNumber}`).innerText;
+                resultDiv.innerHTML = `<span style='color:red;'>Incorrect. ${explanation}</span>`;
+            }
+
+            const endTime = new Date().getTime();
+            const timeTaken = (endTime - startTime) / 1000;
+            resultDiv.innerHTML += `<br><b>Time Taken:</b> ${timeTaken.toFixed(2)} seconds`;
+
+            // reset startTime for the next question
+            startTime = new Date().getTime();
+        }
+    </script>
+    <title>Writing Practice</title>
+</head>
+<body>
+
+<h1>WRITING</h1>
+
+<div id="passage">
+    <p>The development of renewable energy technologies is an essential aspect of mitigating climate change. One prominent technology is <u>solar</u> power. <sup>1</sup> This involves harnessing energy from the <u>sun</u> using photovoltaic cells. <sup>2</sup> Additionally, <u>wind</u> power has gained significant attention. <sup>3</sup> This method converts kinetic energy from <u>wind</u> into electricity.<sup>4</sup> Furthermore, the rise of <u>electric</u> vehicles is a crucial step in reducing <u>carbon</u> emissions. <sup>5</sup></p>
+</div>
+
+<div id="question1">
+    <p>1. Which technology involves the use of photovoltaic cells?</p>
+    <input type="radio" name="question1" value="A"> (A) Wind power<br>
+    <input type="radio" name="question1" value="B"> (B) Hydropower<br>
+    <input type="radio" name="question1" value="C"> (C) Solar power<br>
+    <input type="radio" name="question1" value="D"> (D) Nuclear power<br>
+    <button onclick="checkAnswer(1, 'C')">Submit</button>
+    <div id="result1"></div>
+    <div id="explanation1" style="display:none;">Solar power uses photovoltaic cells to generate energy.</div>
+</div>
+
+<br>
+
+<div id="question2">
+    <p>2. Which natural resource is converted into electricity using wind power?</p>
+    <input type="radio" name="question2" value="A"> (A) Sun<br>
+    <input type="radio" name="question2" value="B"> (B) Water<br>
+    <input type="radio" name="question2" value="C"> (C) Wind<br>
+    <input type="radio" name="question2" value="D"> (D) Geothermal<br>
+    <button onclick="checkAnswer(2, 'C')">Submit</button>
+    <div id="result2"></div>
+    <div id="explanation2" style="display:none;">Wind power converts kinetic energy from wind into electricity.</div>
+</div>
+
+<br>
+
+<div id="question3">
+    <p>3. Which of the following is NOT mentioned as a renewable energy technology in the passage?</p>
+    <input type="radio" name="question3" value="A"> (A) Wind power<br>
+    <input type="radio" name="question3" value="B"> (B) Solar power<br>
+    <input type="radio" name="question3" value="C"> (C) Electric vehicles<br>
+    <input type="radio" name="question3" value="D"> (D) Hydropower<br>
+    <button onclick="checkAnswer(3, 'D')">Submit</button>
+    <div id="result3"></div>
+    <div id="explanation3" style="display:none;">Hydropower is not mentioned in the passage.</div>
+</div>
+
+<br>
+
+<div id="question4">
+    <p>4. What is the main benefit of electric vehicles as stated in the passage?</p>
+    <input type="radio" name="question4" value="A"> (A) Reducing noise pollution<br>
+    <input type="radio" name="question4" value="B"> (B) Increasing fuel efficiency<br>
+    <input type="radio" name="question4" value="C"> (C) Reducing carbon emissions<br>
+    <input type="radio" name="question4" value="D"> (D) Reducing traffic congestion<br>
+    <button onclick="checkAnswer(4, 'C')">Submit</button>
+    <div id="result4"></div>
+    <div id="explanation4" style="display:none;">The passage states that electric vehicles reduce carbon emissions.</div>
+</div>
+
+<br>
+
+<div id="question5">
+    <p>5. Which statement best summarizes the overall focus of the passage?</p>
+    <input type="radio" name="question5" value="A"> (A) The economic impact of renewable energy<br>
+    <input type="radio" name="question5" value="B"> (B) The benefits of traditional energy sources<br>
+    <input type="radio" name="question5" value="C"> (C) Exploring different renewable energy technologies<br>
+    <input type="radio" name="question5" value="D"> (D) The history of renewable energy<br>
+    <button onclick="checkAnswer(5, 'C')">Submit</button>
+    <div id="result5"></div>
+    <div id="explanation5" style="display:none;">The passage explores different renewable energy technologies.</div>
+</div>
+
+</body>
+</html>

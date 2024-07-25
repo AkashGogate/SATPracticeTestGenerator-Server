@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Writing Section</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .question {
+        margin-top: 20px;
+    }
+    .question p {
+        margin-bottom: 10px;
+    }
+    .btn-submit {
+        margin-top: 10px;
+        display: block;
+    }
+    .answer {
+        margin-top: 10px;
+    }
+    .correct {
+        color: green;
+    }
+    .incorrect {
+        color: red;
+    }
+    .time-taken {
+        font-weight: bold;
+    }
+</style>
+</head>
+<body onload="startTimer()">
+<script>
+    let startTime;
+    function startTimer() {
+        startTime = new Date().getTime();
+    }
+    function displayAnswer(questionId, correctOption) {
+        // Clear any previous information
+        const answerDiv = document.getElementById(`answer${questionId}`);
+        answerDiv.innerHTML = '';
+
+        // Get selected option
+        const options = document.getElementsByName(`question${questionId}`);
+        let selectedOption = '';
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+                selectedOption = options[i].value;
+            }
+        }
+
+        // Show if the selected answer is correct or incorrect
+        if (selectedOption === correctOption) {
+            answerDiv.innerHTML = `<span class="correct">Correct!</span>`;
+        } else {
+            answerDiv.innerHTML = `<span class="incorrect">Incorrect. The correct answer is ${correctOption}</span>. <span>Explanation: The correct option best fits the context of the passage.</span>`;
+        }
+
+        // Calculate time taken
+        const endTime = new Date().getTime();
+        const timeTaken = (endTime - startTime) / 1000;
+        const timeTakenLine = document.createElement('div');
+        timeTakenLine.className = 'time-taken';
+        timeTakenLine.textContent = `Time Taken: ${timeTaken.toFixed(2)} seconds`;
+        answerDiv.appendChild(timeTakenLine);
+
+        // Restart timer for next question
+        startTime = new Date().getTime();
+    }
+</script>
+
+<h1>Writing Section</h1>
+<p>The Parthenon is a former temple on the Athenian Acropolis in Greece, dedicated to the goddess Athena, whom the people of Athens considered their patroness.<sup><u>1</u></sup> Construction began in 447 BC when the Athenian Empire was at the peak of its power. It was completed in 438 BC although decoration of the building continued until 432 BC. <sup><u>2</u></sup> It is the most important surviving building of Classical Greece.<sup><u>3</u></sup> Its decorative sculptures are considered some of the high points of Greek art. The Parthenon itself replaced an older temple of Athena, which historians call the Pre-Parthenon or Older Parthenon that was destroyed in the Persian invasion of 480 BC.<sup><u>4</u></sup> The Parthenon is regarded as an enduring symbol of Ancient Greece, Athenian democracy, and Western civilization, and one of the world's greatest cultural monuments.<sup><u>5</u></sup></p>
+
+<div class="question" id="question1">
+    <p>1. When did the construction of the Parthenon start?</p>
+    <label><input type="radio" name="question1" value="A"> (A) 480 BC</label><br>
+    <label><input type="radio" name="question1" value="B"> (B) 447 BC</label><br>
+    <label><input type="radio" name="question1" value="C"> (C) 432 BC</label><br>
+    <label><input type="radio" name="question1" value="D"> (D) 438 BC</label><br>
+    <button onclick="displayAnswer(1, 'B')" class="btn-submit">Submit</button>
+    <div id="answer1" class="answer"></div>
+</div>
+
+<div class="question" id="question2">
+    <p>2. How long did the decoration of the Parthenon take?</p>
+    <label><input type="radio" name="question2" value="A"> (A) 5 years</label><br>
+    <label><input type="radio" name="question2" value="B"> (B) 6 years</label><br>
+    <label><input type="radio" name="question2" value="C"> (C) 7 years</label><br>
+    <label><input type="radio" name="question2" value="D"> (D) 8 years</label><br>
+    <button onclick="displayAnswer(2, 'C')" class="btn-submit">Submit</button>
+    <div id="answer2" class="answer"></div>
+</div>
+
+<div class="question" id="question3">
+    <p>3. According to historians, what was the Parthenon built to replace?</p>
+    <label><input type="radio" name="question3" value="A"> (A) A statue of Athena</label><br>
+    <label><input type="radio" name="question3" value="B"> (B) An older temple of Athena</label><br>
+    <label><input type="radio" name="question3" value="C"> (C) The Colosseum</label><br>
+    <label><input type="radio" name="question3" value="D"> (D) A smaller shrine</label><br>
+    <button onclick="displayAnswer(3, 'B')" class="btn-submit">Submit</button>
+    <div id="answer3" class="answer"></div>
+</div>
+
+<div class="question" id="question4">
+    <p>4. In what year was the older temple of Athena destroyed?</p>
+    <label><input type="radio" name="question4" value="A"> (A) 432 BC</label><br>
+    <label><input type="radio" name="question4" value="B"> (B) 480 BC</label><br>
+    <label><input type="radio" name="question4" value="C"> (C) 447 BC</label><br>
+    <label><input type="radio" name="question4" value="D"> (D) 438 BC</label><br>
+    <button onclick="displayAnswer(4, 'B')" class="btn-submit">Submit</button>
+    <div id="answer4" class="answer"></div>
+</div>
+
+<div class="question" id="question5">
+    <p>5. How is the Parthenon commonly regarded?</p>
+    <label><input type="radio" name="question5" value="A"> (A) A landmark of Roman architecture</label><br>
+    <label><input type="radio" name="question5" value="B"> (B) A testament to Asian culture</label><br>
+    <label><input type="radio" name="question5" value="C"> (C) An enduring symbol of Ancient Greece</label><br>
+    <label><input type="radio" name="question5" value="D"> (D) A ruin indicative of the Persian Empire</label><br>
+    <button onclick="displayAnswer(5, 'C')" class="btn-submit">Submit</button>
+    <div id="answer5" class="answer"></div>
+</div>
+
+</body>
+</html>

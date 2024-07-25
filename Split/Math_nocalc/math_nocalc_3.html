@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Math Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .answer {
+            margin-left: 20px;
+        }
+        .result {
+            margin-top: 10px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .time-taken {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        let startTime;
+
+        window.onload = function() {
+            startTime = new Date().getTime();
+        };
+
+        function checkAnswer(questionId, correctOption) {
+            const selectedOption = document.querySelector(`input[name="question${questionId}"]:checked`);
+            const resultDiv = document.getElementById(`result${questionId}`);
+            const timeTaken = (new Date().getTime() - startTime) / 1000;
+
+            resultDiv.innerHTML = '';
+
+            if (selectedOption) {
+                if (selectedOption.value === correctOption) {
+                    resultDiv.innerHTML = `<p class="correct">Correct!</p>`;
+                } else {
+                    resultDiv.innerHTML = `<p class="incorrect">Incorrect. The correct answer is ${correctOption}. Explanation: ${getExplanation(questionId)}</p>`;
+                }
+            } else {
+                resultDiv.innerHTML = `<p class="incorrect">Please select an answer.</p>`;
+            }
+
+            resultDiv.innerHTML += `<p class="time-taken">Time Taken: ${timeTaken.toFixed(2)} seconds</p>`;
+        }
+
+        function getExplanation(questionId) {
+            switch (questionId) {
+                case 1:
+                    return "To solve 2x + 3 = 7, subtract 3 from both sides to get 2x = 4, then divide by 2 to get x = 2.";
+                case 2:
+                    return "The equation |x - 5| = 3 has two solutions: x - 5 = 3 or x - 5 = -3. Solving these gives x = 8 or x = 2.";
+                case 3:
+                    return "The slope of a line passing through (2, 3) and (4, 7) is (7 - 3) / (4 - 2) = 4 / 2 = 2.";
+                case 4:
+                    return "To find f(2) for f(x) = 2x^2 - 3x + 1, substitute x = 2: f(2) = 2(2)^2 - 3(2) + 1 = 8 - 6 + 1 = 3.";
+                case 5:
+                    return "To solve 3x - 4 = 2x + 1, subtract 2x from both sides to get x - 4 = 1, then add 4 to both sides to get x = 5.";
+                default:
+                    return "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>SAT Math Practice</h1>
+
+    <div class="question">
+        <p>1. What is the value of ( x ) in the equation ( 2x + 3 = 7 )?</p>
+        <div class="answer">
+            <input type="radio" name="question1" value="A"> (A) 1<br>
+            <input type="radio" name="question1" value="B"> (B) 2<br>
+            <input type="radio" name="question1" value="C"> (C) 3<br>
+            <input type="radio" name="question1" value="D"> (D) 4<br>
+        </div>
+        <button onclick="checkAnswer(1, 'B')">Submit</button>
+        <div id="result1" class="result"></div>
+    </div>
+
+    <div class="question">
+        <p>2. What is the solution to the equation ( |x - 5| = 3 )?</p>
+        <div class="answer">
+            <input type="radio" name="question2" value="A"> (A) 2<br>
+            <input type="radio" name="question2" value="B"> (B) 5<br>
+            <input type="radio" name="question2" value="C"> (C) 8<br>
+            <input type="radio" name="question2" value="D"> (D) 3<br>
+        </div>
+        <button onclick="checkAnswer(2, 'A')">Submit</button>
+        <div id="result2" class="result"></div>
+    </div>
+
+    <div class="question">
+        <p>3. What is the slope of the line passing through the points (2, 3) and (4, 7)?</p>
+        <div class="answer">
+            <input type="radio" name="question3" value="A"> (A) 1<br>
+            <input type="radio" name="question3" value="B"> (B) 2<br>
+            <input type="radio" name="question3" value="C"> (C) 3<br>
+            <input type="radio" name="question3" value="D"> (D) 4<br>
+        </div>
+        <button onclick="checkAnswer(3, 'B')">Submit</button>
+        <div id="result3" class="result"></div>
+    </div>
+
+    <div class="question">
+        <p>4. If ( f(x) = 2x^2 - 3x + 1 ), what is ( f(2) )?</p>
+        <div class="answer">
+            <input type="radio" name="question4" value="A"> (A) 3<br>
+            <input type="radio" name="question4" value="B"> (B) 5<br>
+            <input type="radio" name="question4" value="C"> (C) 7<br>
+            <input type="radio" name="question4" value="D"> (D) 9<br>
+        </div>
+        <button onclick="checkAnswer(4, 'A')">Submit</button>
+        <div id="result4" class="result"></div>
+    </div>
+
+    <div class="question">
+        <p>5. What is the value of ( x ) in the equation ( 3x - 4 = 2x + 1 )?</p>
+        <div class="answer">
+            <input type="radio" name="question5" value="A"> (A) 1<br>
+            <input type="radio" name="question5" value="B"> (B) 2<br>
+            <input type="radio" name="question5" value="C"> (C) 3<br>
+            <input type="radio" name="question5" value="D"> (D) 4<br>
+        </div>
+        <button onclick="checkAnswer(5, 'A')">Submit</button>
+        <div id="result5" class="result"></div>
+    </div>
+</body>
+</html>

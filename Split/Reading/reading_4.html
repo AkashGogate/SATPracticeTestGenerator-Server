@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Practice Passage</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .question {
+    margin-bottom: 20px;
+  }
+  .time-info {
+    font-weight: bold;
+  }
+</style>
+<script>
+  let startTime;
+  window.onload = function() {
+    startTime = new Date();
+  }
+
+  function handleSubmit(correctAnswer, explanation, questionNumber) {
+    const selectedAnswer = document.querySelector(`input[name="question${questionNumber}"]:checked`);
+    const resultDiv = document.getElementById(`result${questionNumber}`);
+    const timeDiv = document.getElementById(`time${questionNumber}`);
+    resultDiv.innerHTML = '';
+    timeDiv.innerHTML = '';
+    const endTime = new Date();
+    const timeTaken = Math.floor((endTime - startTime) / 1000);
+    
+    if (selectedAnswer) {
+      if (selectedAnswer.value === correctAnswer) {
+        resultDiv.innerHTML = `<span style="color: green;">Correct!</span>`;
+      } else {
+        resultDiv.innerHTML = `<span style="color: red;">Incorrect! The correct answer is ${correctAnswer}. ${explanation}</span>`;
+      }
+      timeDiv.innerHTML = `<span class="time-info">Time Taken: ${timeTaken} seconds</span>`;
+    } else {
+      resultDiv.innerHTML = `<span style="color: red;">Please select an answer.</span>`;
+    }
+  }
+</script>
+</head>
+<body>
+
+<h1 style="text-align: center;">READING</h1>
+<p style="margin-left: 20px;">Questions 1 – 5:</p>
+<p style="font-style: italic; padding-top: 1pt; padding-left: 20px;">This passage is adapted from Jane Austen, “Pride and Prejudice”. In this scene, Elizabeth Bennet is beginning to change her opinion of Mr. Darcy.</p>
+
+<p style="padding-left: 30px;">1<sup>st</sup> <span>Elizabeth Bennet had been reclining on a lounge, by one of the windows, long enough to see almost all the considerable families in the neighbourhood.'</span><br>
+2<sup>nd</sup> <span>Once the formal greetings were over, she turned towards Mr. Darcy.</span> 
+<br> 
+3<sup>rd</sup> <span>"Shall we sit?" said Elizabeth.</span> 
+<br> 
+4<sup>th</sup> <span>They took their seats at a little distance from the others, and engaged in the conversation which Elizabeth had been anticipating with such curiosity.</span> 
+<br> 
+5<sup>th</sup> <span>"I suppose your father heard from my uncle in town, Mr. Darcy?" Elizabeth began.</span> 
+<br> 
+6<sup>th</sup> <span>"Yes," said Darcy, "he did. I hope he gave you those letters?"</span>
+<br> 
+7<sup>th</sup> <span>"He did," Elizabeth replied, "and I have read them with great pleasure."</span>
+</p>
+
+<div class="question">
+  <p>1. Based on the passage, how had Elizabeth's perception of Mr. Darcy changed?</p>
+  <input type="radio" id="q1a" name="question1" value="A">
+  <label for="q1a">(A) She began to see Mr. Darcy as less proud.</label><br>
+  <input type="radio" id="q1b" name="question1" value="B">
+  <label for="q1b">(B) She respected him less.</label><br>
+  <input type="radio" id="q1c" name="question1" value="C">
+  <label for="q1c">(C) She was more indifferent towards him.</label><br>
+  <input type="radio" id="q1d" name="question1" value="D">
+  <label for="q1d">(D) She mistrusted him even more.</label><br>
+  <button onclick="handleSubmit('A', 'Elizabeth began to warm up to Mr. Darcy and see him in a more positive light.', 1)">Submit</button>
+  <div id="result1"></div>
+  <div id="time1"></div>
+</div>
+
+<div class="question">
+  <p>2. What does the word ‘formal’ in line 2<sup>nd</sup> imply about their initial conversation?</p>
+  <input type="radio" id="q2a" name="question2" value="A">
+  <label for="q2a">(A) It was casual and relaxed.</label><br>
+  <input type="radio" id="q2b" name="question2" value="B">
+  <label for="q2b">(B) It was professional and business-like.</label><br>
+  <input type="radio" id="q2c" name="question2" value="C">
+  <label for="q2c">(C) It was respectful and polite.</label><br>
+  <input type="radio" id="q2d" name="question2" value="D">
+  <label for="q2d">(D) It was joyful and celebratory.</label><br>
+  <button onclick="handleSubmit('C', 'The word “formal” suggests that the conversation was respectful and polite.', 2)">Submit</button>
+  <div id="result2"></div>
+  <div id="time2"></div>
+</div>
+
+<div class="question">
+  <p>3. In the context, what is the significance of Elizabeth's curiosity in line 4<sup>th</sup>?</p>
+  <input type="radio" id="q3a" name="question3" value="A">
+  <label for="q3a">(A) It shows her lack of interest in Mr. Darcy.</label><br>
+  <input type="radio" id="q3b" name="question3" value="B">
+  <label for="q3b">(B) It indicates her growing interest in Mr. Darcy's character.</label><br>
+  <input type="radio" id="q3c" name="question3" value="C">
+  <label for="q3c">(C) It signifies her frustration with Mr. Darcy.</label><br>
+  <input type="radio" id="q3d" name="question3" value="D">
+  <label for="q3d">(D) It shows her satisfaction with her first impressions.</label><br>
+  <button onclick="handleSubmit('B', 'Elizabeth’s curiosity indicates her growing interest in understanding Mr. Darcy better.', 3)">Submit</button>
+  <div id="result3"></div>
+  <div id="time3"></div>
+</div>
+
+<div class="question">
+  <p>4. What is inferred from the exchange between Elizabeth and Mr. Darcy in line 6<sup>th</sup> to line 7<sup>th</sup>?</p>
+  <input type="radio" id="q4a" name="question4" value="A">
+  <label for="q4a">(A) They remain distant and unfriendly.</label><br>
+  <input type="radio" id="q4b" name="question4" value="B">
+  <label for="q4b">(B) They have begun to develop a mutual respect.</label><br>
+  <input type="radio" id="q4c" name="question4" value="C">
+  <label for="q4c">(C) They feel awkward and unsure around each other.</label><br>
+  <input type="radio" id="q4d" name="question4" value="D">
+  <label for="q4d">(D) They are openly hostile to each other.</label><br>
+  <button onclick="handleSubmit('B', 'The exchange suggests that Elizabeth and Mr. Darcy have begun to develop a mutual respect.', 4)">Submit</button>
+  <div id="result4"></div>
+  <div id="time4"></div>
+</div>
+
+<div class="question">
+  <p>5. What is the tone of Elizabeth’s last reply in the passage?</p>
+  <input type="radio" id="q5a" name="question5" value="A">
+  <label for="q5a">(A) Sarcastic</label><br>
+  <input type="radio" id="q5b" name="question5" value="B">
+  <label for="q5b">(B) Enthusiastic</label><br>
+  <input type="radio" id="q5c" name="question5" value="C">
+  <label for="q5c">(C) Deceptive</label><br>
+  <input type="radio" id="q5d" name="question5" value="D">
+  <label for="q5d">(D) Grateful</label><br>
+  <button onclick="handleSubmit('D', 'Elizabeth’s reply suggesting she has read the letters with pleasure indicates a tone of gratitude.', 5)">Submit</button>
+  <div id="result5"></div>
+  <div id="time5"></div>
+</div>
+
+</body>
+</html>

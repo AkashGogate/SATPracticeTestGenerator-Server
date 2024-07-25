@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .question-block {
+            margin: 20px 0;
+        }
+        .result {
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reading Practice</h1>
+    
+    <p><sup>1</sup>In a small village, nestled between rolling hills, there lived a curious boy named Tom. <sup>2</sup>Tom had a knack for finding hidden treasures in the most unexpected places. <sup>3</sup>One sunny afternoon, he ventured into the woods behind his house, following a trail of sparkling stones.</p>
+    <p><sup>4</sup>As he walked deeper into the forest, the trees grew taller and the sunlight dimmer. <sup>5</sup>Suddenly, he stumbled upon a small, ancient-looking chest buried halfway in the ground.</p>
+    <p><sup>6</sup>With great effort, Tom pulled the chest out and opened it, revealing a collection of old, dusty books. <sup>7</sup>To his surprise, one of the books had his name inscribed on its cover. <sup>8</sup>Curious, he opened the book and found it filled with tales of adventure, each story strangely familiar.</p>
+    <p><sup>9</sup>Tom realized that the book was recounting his own dreams and imaginings. <sup>10</sup>Every page he turned unveiled a new chapter of his life, adventures he had yet to embark upon. <sup>11</sup>Excited and a bit overwhelmed, he ran home to show his parents his newfound treasure.</p>
+    
+    <div class="question-block" id="question1">
+        <p>1. What led Tom to venture into the woods?</p>
+        <input type="radio" name="q1" value="a"> (A) He was following a map<br>
+        <input type="radio" name="q1" value="b"> (B) He was searching for his lost dog<br>
+        <input type="radio" name="q1" value="c"> (C) He followed a trail of sparkling stones<br>
+        <input type="radio" name="q1" value="d"> (D) He was exploring for the first time<br>
+        <button onclick="submitAnswer('q1', 'c', 'He followed a trail of sparkling stones')">Submit</button>
+        <div class="result" id="result1"></div>
+        <div id="time1" class="time"></div>
+    </div>
+    
+    <div class="question-block" id="question2">
+        <p>2. What did Tom find under the trees in the forest?</p>
+        <input type="radio" name="q2" value="a"> (A) A silver coin<br>
+        <input type="radio" name="q2" value="b"> (B) An ancient-looking chest<br>
+        <input type="radio" name="q2" value="c"> (C) A map<br>
+        <input type="radio" name="q2" value="d"> (D) A magic wand<br>
+        <button onclick="submitAnswer('q2', 'b', 'Tom found an ancient-looking chest buried halfway in the ground.')">Submit</button>
+        <div class="result" id="result2"></div>
+        <div id="time2" class="time"></div>
+    </div>
+    
+    <div class="question-block" id="question3">
+        <p>3. What did the chest contain?</p>
+        <input type="radio" name="q3" value="a"> (A) Gold coins<br>
+        <input type="radio" name="q3" value="b"> (B) Precious jewels<br>
+        <input type="radio" name="q3" value="c"> (C) Old, dusty books<br>
+        <input type="radio" name="q3" value="d"> (D) A handwritten letter<br>
+        <button onclick="submitAnswer('q3', 'c', 'The chest contained old, dusty books.')">Submit</button>
+        <div class="result" id="result3"></div>
+        <div id="time3" class="time"></div>
+    </div>
+    
+    <div class="question-block" id="question4">
+        <p>4. What was unique about one of the books?</p>
+        <input type="radio" name="q4" value="a"> (A) It glowed in the dark<br>
+        <input type="radio" name="q4" value="b"> (B) It had a hidden compartment<br>
+        <input type="radio" name="q4" value="c"> (C) Tom’s name was inscribed on its cover<br>
+        <input type="radio" name="q4" value="d"> (D) It contained magic spells<br>
+        <button onclick="submitAnswer('q4', 'c', 'One of the books had Tom’s name inscribed on its cover.')">Submit</button>
+        <div class="result" id="result4"></div>
+        <div id="time4" class="time"></div>
+    </div>
+  
+    <div class="question-block" id="question5">
+        <p>5. How did Tom feel when he realized what the book contained?</p>
+        <input type="radio" name="q5" value="a"> (A) Frightened<br>
+        <input type="radio" name="q5" value="b"> (B) Confused<br>
+        <input type="radio" name="q5" value="c"> (C) Excited and overwhelmed<br>
+        <input type="radio" name="q5" value="d"> (D) Disappointed<br>
+        <button onclick="submitAnswer('q5', 'c', 'Tom felt excited and a bit overwhelmed when he realized the book contained tales of his own dreams and imaginings.')">Submit</button>
+        <div class="result" id="result5"></div>
+        <div id="time5" class="time"></div>
+    </div>
+
+    <script>
+        function submitAnswer(questionId, correctAnswer, explanation) {
+            var selected = document.querySelector('input[name="' + questionId + '"]:checked');
+            var resultDiv = document.getElementById('result' + questionId[1]);
+            var timeDiv = document.getElementById('time' + questionId[1]);
+            resultDiv.innerHTML = '';
+            timeDiv.innerHTML = '';
+
+            if (selected) {
+                var end = new Date();
+                var timeTaken = (end - start) / 1000;
+
+                if (selected.value === correctAnswer) {
+                    resultDiv.innerHTML = '<span class="correct">Correct!</span>';
+                } else {
+                    resultDiv.innerHTML = `<span class="incorrect">Incorrect! The correct answer is ${correctAnswer}. ${explanation}</span>`;
+                }
+                timeDiv.innerHTML = `<strong>Time Taken:</strong> ${timeTaken.toFixed(2)} seconds`;
+            }
+        }
+
+        var start = new Date();
+    </script>
+</body>
+</html>

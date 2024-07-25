@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Math Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .answer {
+            margin-left: 20px;
+        }
+        .result {
+            margin-top: 10px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .time-taken {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        let startTime;
+
+        window.onload = function() {
+            startTime = new Date().getTime();
+        };
+
+        function checkAnswer(questionId, correctOption) {
+            const selectedOption = document.querySelector(`input[name="question${questionId}"]:checked`);
+            const resultDiv = document.getElementById(`result${questionId}`);
+            const timeTaken = (new Date().getTime() - startTime) / 1000;
+
+            resultDiv.innerHTML = '';
+
+            if (selectedOption) {
+                if (selectedOption.value === correctOption) {
+                    resultDiv.innerHTML = `<p class="correct">Correct!</p>`;
+                } else {
+                    resultDiv.innerHTML = `<p class="incorrect">Incorrect. The correct answer is ${correctOption}.</p>`;
+                }
+            } else {
+                resultDiv.innerHTML = `<p class="incorrect">Please select an answer.</p>`;
+            }
+
+            resultDiv.innerHTML += `<p class="time-taken">Time Taken: ${timeTaken.toFixed(2)} seconds</p>`;
+        }
+    </script>
+</head>
+<body>
+    <h1>SAT Math Practice</h1>
+    <div class="question">
+        <p>1. The graph below represents the function ( y = 2x + 3 ). What is the y-intercept of the graph?</p>
+        <svg width="400" height="400">
+            <line x1="50" y1="350" x2="350" y2="350" stroke="black" />
+            <line x1="50" y1="350" x2="50" y2="50" stroke="black" />
+            <line x1="50" y1="350" x2="350" y2="50" stroke="blue" />
+            <text x="360" y="355" font-size="12">x</text>
+            <text x="40" y="40" font-size="12">y</text>
+            <text x="45" y="355" font-size="12">0</text>
+            <text x="45" y="305" font-size="12">1</text>
+            <text x="45" y="255" font-size="12">2</text>
+            <text x="45" y="205" font-size="12">3</text>
+            <text x="45" y="155" font-size="12">4</text>
+            <text x="45" y="105" font-size="12">5</text>
+            <text x="45" y="55" font-size="12">6</text>
+            <text x="100" y="365" font-size="12">1</text>
+            <text x="150" y="365" font-size="12">2</text>
+            <text x="200" y="365" font-size="12">3</text>
+            <text x="250" y="365" font-size="12">4</text>
+            <text x="300" y="365" font-size="12">5</text>
+        </svg>
+        <div class="answer">
+            <input type="radio" name="question1" value="A"> (A) 1<br>
+            <input type="radio" name="question1" value="B"> (B) 2<br>
+            <input type="radio" name="question1" value="C"> (C) 3<br>
+            <input type="radio" name="question1" value="D"> (D) 4<br>
+        </div>
+        <button onclick="checkAnswer(1, 'C')">Submit</button>
+        <div id="result1" class="result"></div>
+    </div>
+
+    <div class="question">
+        <p>2. Solve for ( x ) in the equation ( |x + 3| = 6 ). What is the positive solution?</p>
+        <div class="answer">
+            <input type="radio" name="question2" value="A"> (A) 2<br>
+            <input type="radio" name="question2" value="B"> (B) 3<br>
+            <input type="radio" name="question2" value="C"> (C) 9<br>
+            <input type="radio" name="question2" value="D"> (D) 6<br>
+        </div>
+        <button onclick="checkAnswer(2, 'A')">Submit</button>
+        <div id="result2" class="result"></div>
+    </div>
+
+    <div class="question">
+        <p>3. What is the slope of the line represented by the equation ( y = 2x + 3 )?</p>
+        <div class="answer">
+            <input type="radio" name="question3" value="A"> (A) 1<br>
+            <input type="radio" name="question3" value="B"> (B) 2<br>
+            <input type="radio" name="question3" value="C"> (C) 3<br>
+            <input type="radio" name="question3" value="D"> (D) 4<br>
+        </div>
+        <button onclick="checkAnswer(3, 'B')">Submit</button>
+        <div id="result3" class="result"></div>
+    </div>
+
+    <div class="question">
+        <p>4. If ( y = 2x + 3 ), what is the value of ( y ) when ( x = 2 )?</p>
+        <div class="answer">
+            <input type="radio" name="question4" value="A"> (A) 5<br>
+            <input type="radio" name="question4" value="B"> (B) 6<br>
+            <input type="radio" name="question4" value="C"> (C) 7<br>
+            <input type="radio" name="question4" value="D"> (D) 8<br>
+        </div>
+        <button onclick="checkAnswer(4, 'C')">Submit</button>
+        <div id="result4" class="result"></div>
+    </div>
+
+    <div class="question">
+        <p>5. What is the x-intercept of the line represented by the equation ( y = 2x + 3 )?</p>
+        <div class="answer">
+            <input type="radio" name="question5" value="A"> (A) -1.5<br>
+            <input type="radio" name="question5" value="B"> (B) -2<br>
+            <input type="radio" name="question5" value="C"> (C) -3<br>
+            <input type="radio" name="question5" value="D"> (D) -4<br>
+        </div>
+        <button onclick="checkAnswer(5, 'A')">Submit</button>
+        <div id="result5" class="result"></div>
+    </div>
+</body>
+</html>
